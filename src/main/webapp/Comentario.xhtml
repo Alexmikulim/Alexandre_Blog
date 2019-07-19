@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template.xhtml">
+	
+	<ui:define name="tituloPrincipal">Comentario</ui:define>
+	<ui:define name="tituloSecundario">Insira os dados do comentario</ui:define>
+	
+	<ui:define name="botoesAcao">
+	<p:commandButton value="Salvar" action="#{comentarioBean.cadastrar()}" update="@form" />
+	</ui:define>
+	
+	<ui:define name="conteudo">
+	
+	<p:panelGrid columns="3">
+	
+	<p:outputLabel for="n1" value="Nome: "/>
+	<p:inputText id="n1" value="#{comentarioBean.comentario.nome}"/>
+	<p:message for="n1"/>
+	
+	<p:outputLabel for="n2" value="Comentario: "/>
+	<p:inputText id="n2" value="#{comentarioBean.comentario.comentario}"/>
+	<p:message for="n2"/>
+	
+	<p:outputLabel for="n3" value="Tipo de Mensagem: "/>
+	<p:selectOneMenu id="n3" value="#{comentarioBean.comentario.tipoMensagem}">
+	<f:selectItem itemLabel="--selecione--" noSelectionOption="true"/>
+	<f:selectItem itemLabel="Normal" itemValue="Normal"/>
+	<f:selectItem itemLabel="Importante" itemValue="Importante"/>
+	<f:selectItem itemLabel="Urgente" itemValue="Urgente"/>
+	</p:selectOneMenu>
+	<p:message for="n3"/>
+	
+	
+	
+	</p:panelGrid>
+	
+	</ui:define>
+	
+	</ui:composition>
+</html>

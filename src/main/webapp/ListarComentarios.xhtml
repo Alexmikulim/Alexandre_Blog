@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template.xhtml">
+	
+	<ui:define name="tituloPrincipal">Lista de Comentarios</ui:define>
+	<ui:define name="tituloSecundario"></ui:define>
+	
+	<ui:define name="botoesAcao"></ui:define>
+	
+	<ui:define name="conteudo">
+	
+	<p:dataTable value="#{comentarioBean.listar()}" var="com">
+	
+	<p:column headerText="Nome">
+	<h:outputText value="#{com.nome}" />
+	</p:column>
+	
+	<p:column headerText="Comentario">
+	<h:outputText value="#{com.comentario}" />
+	</p:column>
+	
+	<p:column headerText="Tipo do Comentario">
+	<h:outputText value="#{com.tipoMensagem}" />
+	</p:column>
+	
+	<p:column headerText="Data e Hora"> 
+	<h:outputText value="#{com.dataHora}" />
+	</p:column>
+	
+	<p:column headerText="Curtidas">
+	<h:outputText value="#{com.curtidas}" />
+	</p:column>
+	
+	<p:column headerText="Ações">
+	<p:commandButton value="Curtir" action="#{comentarioBean.curtir(com)}" update="@form"/>
+	<p:commandButton value="Excluir" action="#{comentarioBean.excluir(com)}" update="@form"/>
+	</p:column>
+	
+	
+	</p:dataTable>
+	
+	</ui:define>
+	
+	</ui:composition>
+</html>
